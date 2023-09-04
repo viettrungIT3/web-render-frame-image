@@ -1,0 +1,46 @@
+version: '3.0'
+services:
+    web-data-management: 
+        build: 
+            context: './php'
+            dockerfile: php-with-s3.dockerfile
+        container_name: web-data-management
+        volumes: 
+            - ./src:/var/www/html
+            - ./container-init.sh:/container-init.sh
+            - ./etc/apache2/apache2.conf:/etc/apache2/apache2.conf
+            - ./etc/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf
+        ports: 
+            - 6868:80
+        entrypoint: sh -c "/container-init.sh"
+        privileged: true
+        extra_hosts: 
+            - "web-data-management.localhost.com:127.0.0.1"
+        networks:
+            web-data-management:
+                aliases:
+                    - web-data-management.localhost.com
+
+    web-data-management-db: 
+        platform: linux/x86_64
+        image: mysql:5.7
+        volumes:
+            - ./db_data:/var/lib/mysql
+            - ./_db:/backup
+        environment:
+            MYSQL_ROOT_PASSWORD: "qdtjozdvhm1@"
+            MYSQL_PASSWORD: "20akaksdf29adfjaksdf__@"
+            MYSQL_USER: "admin"
+            MYSQL_DATABASE: "web_data_management_database"
+        ports: 
+            - 3806:3306
+        networks:
+            web-data-management:
+                aliases:
+                    - "web-data-management-db.localhost.com"
+        container_name: "web-data-management-db"
+
+
+networks:
+    web-data-management:
+

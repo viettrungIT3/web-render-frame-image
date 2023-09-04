@@ -1,0 +1,40 @@
+.container-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container-login .card {
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.container-login .card h2 {
+  color: #007BFF;
+  margin-bottom: 20px;
+}
+.container-login .card form {
+  display: flex;
+  flex-direction: column;
+}
+.container-login .card form label {
+  text-align: left;
+  margin-bottom: 5px;
+}
+.container-login .card form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.container-login .card form button {
+  padding: 10px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

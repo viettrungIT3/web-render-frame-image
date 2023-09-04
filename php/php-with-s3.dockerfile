@@ -1,0 +1,27 @@
+FROM php:7.4-apache
+
+RUN service apache2 stop && \
+    a2enmod rewrite && \
+    a2enmod headers
+
+RUN useradd Personal -m -p '09sjakfw_ka11sadf' && \
+    usermod -aG Personal,root Personal
+
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+RUN apt-get -y update && \
+    apt-get -y install vim && \
+    apt-get -y install git && \
+    apt-get -y install curl
+
+RUN apt-get update && apt-get install -y \
+		libfreetype6-dev \
+		libjpeg62-turbo-dev \
+		libpng-dev \
+	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
+	&& docker-php-ext-install -j$(nproc) gd
+
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+
+
