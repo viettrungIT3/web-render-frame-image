@@ -21,13 +21,16 @@ function readFile(input) {
 
 $uploadCrop = $('#upload-demo').croppie({
     viewport: {
-        width: 160,
-        height: 160,
-        type: 'circle'
+        width: 200,
+        height: 200,
     },
-    enforceBoundary: false,
+    boundary: {
+        width: 250, // Thay đổi kích thước này cho phù hợp với khung ảnh của bạn
+        height: 250, // Thay đổi kích thước này cho phù hợp với khung ảnh của bạn
+    },
     enableExif: true
 });
+
 $('#cropImagePop').on('shown.bs.modal', function () {
     $('.cr-slider-wrap').prepend('<p>Image Zoom</p>');
     $uploadCrop.croppie('bind', {
@@ -57,7 +60,7 @@ $('#cropImageBtn').on('click', function (ev) {
         // format: 'jpeg',
         backgroundColor: "#000000",
         format: 'png',
-        size: { width: 160, height: 160 }
+        size: { width: 200, height: 200 }
     }).then(function (resp) {
         $('#item-img-output').attr('src', resp);
         $('#cropImagePop').modal('hide');

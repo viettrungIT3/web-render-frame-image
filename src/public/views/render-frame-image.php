@@ -47,6 +47,7 @@
                 <div class="up-photo-content pb-5">
 
                     <div id="upload-demo" class="center-block">
+                    <img src="<?= (get_media_uri("frame.png")); ?>" alt="">
                         <h5><i class="fas fa-arrows-alt mr-1"></i> Drag your photo as you require</h5>
                     </div>
                     <div class="upload-action-btn text-center px-2">
