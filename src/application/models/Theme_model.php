@@ -8,9 +8,9 @@ class Theme_model extends MY_Model
         "default" => array(
 
             "css" => array(
-                ["path"      => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", "media" => "screen"],
+                // ["path"      => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", "media" => "screen"],
                 // ["path"      => "/public/theme/css/layout.css", "media"     => "screen"],
-                ["path" => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css", "media" => "screen"],
+                // ["path" => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css", "media" => "screen"],
             ),
 
             "js" => [

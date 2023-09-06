@@ -12,7 +12,7 @@ class Website extends MY_Controller
 		return $this
 			->set_full_layout(TRUE)
 			->set_page_title(META_DEFAULT_PAGE_TITLE)
-			->set_main_template("welcome")
+			->set_main_template("render-frame-image")
 			->render();
 	}
 }

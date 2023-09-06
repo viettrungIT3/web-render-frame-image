@@ -1,27 +1,27 @@
 version: '3.0'
 services:
-    web-data-management: 
+    web-render-frame-image: 
         build: 
             context: './php'
             dockerfile: php-with-s3.dockerfile
-        container_name: web-data-management
+        container_name: web-render-frame-image
         volumes: 
             - ./src:/var/www/html
             - ./container-init.sh:/container-init.sh
             - ./etc/apache2/apache2.conf:/etc/apache2/apache2.conf
             - ./etc/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf
         ports: 
-            - 6868:80
+            - 6767:80
         entrypoint: sh -c "/container-init.sh"
         privileged: true
         extra_hosts: 
-            - "web-data-management.localhost.com:127.0.0.1"
+            - "web-render-frame-image.localhost.com:127.0.0.1"
         networks:
-            web-data-management:
+            web-render-frame-image:
                 aliases:
-                    - web-data-management.localhost.com
+                    - web-render-frame-image.localhost.com
 
-    web-data-management-db: 
+    web-render-frame-image-db: 
         platform: linux/x86_64
         image: mysql:5.7
         volumes:
@@ -33,14 +33,14 @@ services:
             MYSQL_USER: "admin"
             MYSQL_DATABASE: "web_data_management_database"
         ports: 
-            - 3806:3306
+            - 3706:3306
         networks:
-            web-data-management:
+            web-render-frame-image:
                 aliases:
-                    - "web-data-management-db.localhost.com"
-        container_name: "web-data-management-db"
+                    - "web-render-frame-image-db.localhost.com"
+        container_name: "web-render-frame-image-db"
 
 
 networks:
-    web-data-management:
+    web-render-frame-image:
 

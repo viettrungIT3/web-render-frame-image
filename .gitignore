@@ -29,9 +29,7 @@ db_data
 
 *.swp
 src/logs
-.env
 src/build
 src/dist
 src/deploy*
 src/hash
-src/env
